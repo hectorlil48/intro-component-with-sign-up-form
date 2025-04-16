@@ -2,7 +2,7 @@ import HeroLeft from "./HeroLeft";
 
 const HeroSection = () => {
   return (
-    <section className="">
+    <section className="text-white">
       <HeroLeft />
     </section>
   );

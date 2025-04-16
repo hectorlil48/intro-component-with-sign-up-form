@@ -1,8 +1,14 @@
 const HeroLeft = () => {
   return (
-    <div>
-      <h1>Learn to code by watching others</h1>
-      <p>See how experienced developers solve pro</p>
+    <div className="text-center">
+      <h1 className="mb-4 text-[1.75rem] leading-9 font-bold tracking-[-0.29px]">
+        Learn to code by watching others
+      </h1>
+      <p>
+        See how experienced developers solve problems in real-time. Watching
+        scripted tutorials is great, but understanding how developers think is
+        invaluable.
+      </p>
     </div>
   );
 };
