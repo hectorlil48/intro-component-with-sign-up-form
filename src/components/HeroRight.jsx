@@ -29,7 +29,7 @@ const HeroRight = () => {
           placeholder="Password"
           className="placeholder-dark-blue border-border-grey w-full rounded-[5px] border py-[15px] pl-5"
         />
-        <button className="bg-btn-green rounded-[5px] py-[15px] text-[15px] leading-[26px] font-semibold tracking-[1px] uppercase shadow-[inset_0_-4px_0_0_rgba(0,0,0,0.0909)]">
+        <button className="bg-btn-green hover:bg-btn-hover rounded-[5px] py-[15px] text-[15px] leading-[26px] font-semibold tracking-[1px] uppercase shadow-[inset_0_-4px_0_0_rgba(0,0,0,0.0909)]">
           Claim Your Free Trail
         </button>
       </form>
