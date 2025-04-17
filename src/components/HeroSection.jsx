@@ -3,7 +3,7 @@ import HeroRight from "./HeroRight";
 
 const HeroSection = () => {
   return (
-    <section className="flex flex-col gap-16 text-white md:flex-row">
+    <section className="flex flex-col gap-16 text-white sm:flex-row">
       <HeroLeft />
       <HeroRight />
     </section>
