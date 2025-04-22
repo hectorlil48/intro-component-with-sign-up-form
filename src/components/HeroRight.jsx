@@ -8,30 +8,39 @@ const HeroRight = () => {
         </p>
       </div>
 
-      <form className="flex flex-col gap-4 rounded-[10px] bg-white p-6">
+      <form className="flex flex-col gap-4 rounded-[10px] bg-white p-6 shadow-[0_8px_0_0_rgba(0,0,0,0.14)]">
         <input
           type="text"
+          name="first name"
           placeholder="First Name"
           className="placeholder-dark-blue border-border-grey w-full rounded-[5px] border py-[15px] pl-5"
         />
         <input
           type="text"
-          placeholder="Last Name"
+          name="Last Name"
+          placeholder="last name"
           className="placeholder-dark-blue border-border-grey w-full rounded-[5px] border py-[15px] pl-5"
         />
         <input
           type="email"
+          name="Email"
+          autoComplete="email"
           placeholder="Email Address"
           className="placeholder-dark-blue border-border-grey w-full rounded-[5px] border py-[15px] pl-5"
         />
         <input
           type="password"
+          name="password"
           placeholder="Password"
           className="placeholder-dark-blue border-border-grey w-full rounded-[5px] border py-[15px] pl-5"
         />
         <button className="bg-btn-green hover:bg-btn-hover rounded-[5px] py-[15px] text-[15px] leading-[26px] font-semibold tracking-[1px] uppercase shadow-[inset_0_-4px_0_0_rgba(0,0,0,0.0909)]">
           Claim Your Free Trail
         </button>
+        <p className="text-light-purple -mt-2 px-[15px] text-center text-[11px] leading-[21px] font-medium">
+          By clicking the button, you are agreeing to our{" "}
+          <span className="text-firered font-bold">Terms and Services</span>
+        </p>
       </form>
     </div>
   );
