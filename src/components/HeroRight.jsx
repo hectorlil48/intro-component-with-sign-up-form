@@ -8,7 +8,7 @@ const HeroRight = () => {
         </p>
       </div>
 
-      <form className="flex flex-col gap-4 rounded-[10px] bg-white p-6 shadow-[0_8px_0_0_rgba(0,0,0,0.14)]">
+      <form className="flex flex-col gap-4 rounded-[10px] bg-white p-6 shadow-[0_8px_0_0_rgba(0,0,0,0.14)] lg:p-10">
         <input
           type="text"
           name="first name"
