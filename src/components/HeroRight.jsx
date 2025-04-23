@@ -1,4 +1,19 @@
+import { useState } from "react";
+
 const HeroRight = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(firstName);
+    console.log(lastName);
+    console.log(email);
+    console.log(password);
+  };
+
   return (
     <div className="flex-1">
       <div className="bg-cta-purple mb-6 rounded-[10px] px-[66px] py-[18px] text-center shadow-[0_8px_0_0_rgba(0,0,0,0.14)] lg:py-[17px]">
@@ -8,22 +23,31 @@ const HeroRight = () => {
         </p>
       </div>
 
-      <form className="flex flex-col gap-4 rounded-[10px] bg-white p-6 shadow-[0_8px_0_0_rgba(0,0,0,0.14)] lg:p-10">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-4 rounded-[10px] bg-white p-6 shadow-[0_8px_0_0_rgba(0,0,0,0.14)] lg:p-10"
+      >
         <input
           type="text"
-          name="first name"
+          name="firstName"
+          onChange={(e) => setFirstName(e.target.value)}
+          value={firstName}
           placeholder="First Name"
           className="placeholder-dark-blue border-border-grey text-dark-blue w-full rounded-[5px] border py-[15px] pl-5"
         />
         <input
           type="text"
-          name="last Name"
+          name="lastName"
+          onChange={(e) => setLastName(e.target.value)}
+          value={lastName}
           placeholder="Last name"
           className="placeholder-dark-blue border-border-grey focus:border-cta-purple text-dark-blue w-full rounded-[5px] border py-[15px] pl-5"
         />
         <input
           type="email"
-          name="Email"
+          name="email"
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
           autoComplete="email"
           placeholder="Email Address"
           className="placeholder-dark-blue border-border-grey text-dark-blue w-full rounded-[5px] border py-[15px] pl-5"
@@ -31,6 +55,8 @@ const HeroRight = () => {
         <input
           type="password"
           name="password"
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
           placeholder="Password"
           className="placeholder-dark-blue border-border-grey text-dark-blue w-full rounded-[5px] border py-[15px] pl-5"
         />
