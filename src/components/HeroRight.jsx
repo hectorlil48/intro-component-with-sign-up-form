@@ -1,4 +1,5 @@
 import { useState } from "react";
+import errorIcon from "../assets/icon-error.svg";
 
 const HeroRight = () => {
   const [firstName, setFirstName] = useState("");
@@ -41,37 +42,51 @@ const HeroRight = () => {
         onSubmit={handleSubmit}
         className="flex flex-col gap-4 rounded-[10px] bg-white p-6 shadow-[0_8px_0_0_rgba(0,0,0,0.14)] lg:gap-5 lg:p-10"
       >
-        <div>
+        <div className="relative">
           <input
             type="text"
             name="firstName"
             onChange={(e) => setFirstName(e.target.value)}
             value={firstName}
-            className={`${inputBaseStyles} ${errors.firstName ? "focus:red-300 border-2 border-red-500 focus:border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
+            className={`${inputBaseStyles} ${errors.firstName ? "border-2 border-red-500 focus:border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
             placeholder={errors.firstName ? "" : "First Name"}
           />
+          {errors.firstName && (
+            <img
+              src={errorIcon}
+              alt="Error"
+              className="pointer-events-none absolute top-[35%] right-4 h-6 w-6 -translate-y-1/2"
+            />
+          )}
           {errors.firstName && (
             <p className="text-firered mt-[6px] text-right text-[11px] font-medium italic">
               First Name cannot be empty
             </p>
           )}
         </div>
-        <div>
+        <div className="relative">
           <input
             type="text"
             name="lastName"
             onChange={(e) => setLastName(e.target.value)}
             value={lastName}
             placeholder={errors.lastName ? "" : "Last Name"}
-            className={`${inputBaseStyles} ${errors.lastName ? "focus:red-300 border-2 border-red-500 focus:border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
+            className={`${inputBaseStyles} ${errors.lastName ? "border-2 border-red-500 focus:border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
           />
+          {errors.lastName && (
+            <img
+              src={errorIcon}
+              alt="Error"
+              className="pointer-events-none absolute top-[35%] right-4 h-6 w-6 -translate-y-1/2"
+            />
+          )}
           {errors.lastName && (
             <p className="text-firered mt-[6px] text-right text-[11px] font-medium italic">
               Last Name cannot be empty
             </p>
           )}
         </div>
-        <div>
+        <div className="relative">
           <input
             type="email"
             name="email"
@@ -79,23 +94,37 @@ const HeroRight = () => {
             value={email}
             autoComplete="email"
             placeholder={errors.email ? "" : "Email Address"}
-            className={`${inputBaseStyles} ${errors.email ? "focus:red-300 border-2 border-red-500 focus:border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
+            className={`${inputBaseStyles} ${errors.email ? "border-2 border-red-500 focus:border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
           />
+          {errors.email && (
+            <img
+              src={errorIcon}
+              alt="Error"
+              className="pointer-events-none absolute top-[35%] right-4 h-6 w-6 -translate-y-1/2"
+            />
+          )}
           {errors.email && (
             <p className="text-firered mt-[6px] text-right text-[11px] font-medium italic">
               Email cannot be empty
             </p>
           )}
         </div>
-        <div>
+        <div className="relative">
           <input
             type="password"
             name="password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             placeholder={errors.password ? "" : "Password"}
-            className={`${inputBaseStyles} ${errors.password ? "focus:red-300 border-2 border-red-500 focus:border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
+            className={`${inputBaseStyles} ${errors.password ? "border-2 border-red-500 focus:border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
           />
+          {errors.password && (
+            <img
+              src={errorIcon}
+              alt="Error"
+              className="pointer-events-none absolute top-[35%] right-4 h-6 w-6 -translate-y-1/2"
+            />
+          )}
           {errors.password && (
             <p className="text-firered mt-[6px] text-right text-[11px] font-medium italic">
               Password cannot be empty
