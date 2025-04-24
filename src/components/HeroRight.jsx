@@ -26,7 +26,7 @@ const HeroRight = () => {
   };
 
   const inputBaseStyles =
-    "placeholder-dark-blue text-dark-blue w-full rounded-[5px] py-[15px] pl-5 focus:outline-none";
+    "placeholder-dark-blue placeholder:text-sm text-sm text-dark-blue w-full rounded-[5px] py-[15px] pl-5 lg:pl-8 focus:outline-none";
 
   return (
     <div className="flex-1">
@@ -39,7 +39,7 @@ const HeroRight = () => {
 
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-4 rounded-[10px] bg-white p-6 shadow-[0_8px_0_0_rgba(0,0,0,0.14)] lg:p-10"
+        className="flex flex-col gap-4 rounded-[10px] bg-white p-6 shadow-[0_8px_0_0_rgba(0,0,0,0.14)] lg:gap-5 lg:p-10"
       >
         <div>
           <input
@@ -47,8 +47,8 @@ const HeroRight = () => {
             name="firstName"
             onChange={(e) => setFirstName(e.target.value)}
             value={firstName}
-            placeholder="First Name"
             className={`${inputBaseStyles} ${errors.firstName ? "focus:red-300 border-2 border-red-500 focus:border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
+            placeholder={errors.firstName ? "" : "First Name"}
           />
           {errors.firstName && (
             <p className="text-firered mt-[6px] text-right text-[11px] font-medium italic">
@@ -62,7 +62,7 @@ const HeroRight = () => {
             name="lastName"
             onChange={(e) => setLastName(e.target.value)}
             value={lastName}
-            placeholder="Last name"
+            placeholder={errors.lastName ? "" : "Last Name"}
             className={`${inputBaseStyles} ${errors.lastName ? "focus:red-300 border-2 border-red-500 focus:border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
           />
           {errors.lastName && (
@@ -78,7 +78,7 @@ const HeroRight = () => {
             onChange={(e) => setEmail(e.target.value)}
             value={email}
             autoComplete="email"
-            placeholder="Email Address"
+            placeholder={errors.email ? "" : "Email Address"}
             className={`${inputBaseStyles} ${errors.email ? "focus:red-300 border-2 border-red-500 focus:border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
           />
           {errors.email && (
@@ -93,7 +93,7 @@ const HeroRight = () => {
             name="password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
-            placeholder="Password"
+            placeholder={errors.password ? "" : "Password"}
             className={`${inputBaseStyles} ${errors.password ? "focus:red-300 border-2 border-red-500 focus:border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
           />
           {errors.password && (
@@ -105,7 +105,7 @@ const HeroRight = () => {
         <button className="bg-btn-green hover:bg-btn-hover rounded-[5px] py-[15px] text-[15px] leading-[26px] font-semibold tracking-[1px] uppercase shadow-[inset_0_-4px_0_0_rgba(0,0,0,0.0909)]">
           Claim Your Free Trail
         </button>
-        <p className="text-light-purple -mt-2 px-[15px] text-center text-[11px] leading-[21px] font-medium">
+        <p className="text-light-purple -mt-2 px-[15px] text-center text-[11px] leading-[21px] font-medium lg:-mt-3">
           By clicking the button, you are agreeing to our{" "}
           <span className="text-firered font-bold">Terms and Services</span>
         </p>
