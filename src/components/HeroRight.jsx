@@ -5,14 +5,28 @@ const HeroRight = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(firstName);
-    console.log(lastName);
-    console.log(email);
-    console.log(password);
+
+    const newErrors = {
+      firstName: firstName.trim() === "",
+      lastName: lastName.trim() === "",
+      email: email.trim() === "",
+      password: password.trim() === "",
+    };
+
+    setErrors(newErrors);
+
+    const hasErrors = Object.values(newErrors).some(Boolean);
+    if (!hasErrors) {
+      console.log("Form submitted:", { firstName });
+    }
   };
+
+  const inputBaseStyles =
+    "placeholder-dark-blue text-dark-blue w-full rounded-[5px] py-[15px] pl-5 focus:outline-none";
 
   return (
     <div className="flex-1">
@@ -33,7 +47,7 @@ const HeroRight = () => {
           onChange={(e) => setFirstName(e.target.value)}
           value={firstName}
           placeholder="First Name"
-          className="placeholder-dark-blue border-border-grey text-dark-blue w-full rounded-[5px] border py-[15px] pl-5"
+          className={`${inputBaseStyles} ${errors.firstName ? "focus:red-300 border-2 border-red-500 focus:border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
         />
         <input
           type="text"
@@ -41,7 +55,7 @@ const HeroRight = () => {
           onChange={(e) => setLastName(e.target.value)}
           value={lastName}
           placeholder="Last name"
-          className="placeholder-dark-blue border-border-grey focus:border-cta-purple text-dark-blue w-full rounded-[5px] border py-[15px] pl-5"
+          className={`${inputBaseStyles} ${errors.lastName ? "focus:red-300 border-2 border-red-500 focus:border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
         />
         <input
           type="email"
@@ -50,7 +64,7 @@ const HeroRight = () => {
           value={email}
           autoComplete="email"
           placeholder="Email Address"
-          className="placeholder-dark-blue border-border-grey text-dark-blue w-full rounded-[5px] border py-[15px] pl-5"
+          className={`${inputBaseStyles} ${errors.email ? "focus:red-300 border-2 border-red-500 focus:border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
         />
         <input
           type="password"
@@ -58,7 +72,7 @@ const HeroRight = () => {
           onChange={(e) => setPassword(e.target.value)}
           value={password}
           placeholder="Password"
-          className="placeholder-dark-blue border-border-grey text-dark-blue w-full rounded-[5px] border py-[15px] pl-5"
+          className={`${inputBaseStyles} ${errors.password ? "focus:red-300 border-2 border-red-500 focus:border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
         />
         <button className="bg-btn-green hover:bg-btn-hover rounded-[5px] py-[15px] text-[15px] leading-[26px] font-semibold tracking-[1px] uppercase shadow-[inset_0_-4px_0_0_rgba(0,0,0,0.0909)]">
           Claim Your Free Trail
