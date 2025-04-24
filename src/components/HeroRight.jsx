@@ -48,7 +48,7 @@ const HeroRight = () => {
             name="firstName"
             onChange={(e) => setFirstName(e.target.value)}
             value={firstName}
-            className={`${inputBaseStyles} ${errors.firstName ? "border-2 border-red-500 focus:border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
+            className={`${inputBaseStyles} ${errors.firstName ? "focus:border-firered border-2 border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
             placeholder={errors.firstName ? "" : "First Name"}
           />
           {errors.firstName && (
@@ -71,7 +71,7 @@ const HeroRight = () => {
             onChange={(e) => setLastName(e.target.value)}
             value={lastName}
             placeholder={errors.lastName ? "" : "Last Name"}
-            className={`${inputBaseStyles} ${errors.lastName ? "border-2 border-red-500 focus:border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
+            className={`${inputBaseStyles} ${errors.lastName ? "focus:border-firered border-2 border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
           />
           {errors.lastName && (
             <img
@@ -94,7 +94,7 @@ const HeroRight = () => {
             value={email}
             autoComplete="email"
             placeholder={errors.email ? "" : "Email Address"}
-            className={`${inputBaseStyles} ${errors.email ? "border-2 border-red-500 focus:border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
+            className={`${inputBaseStyles} ${errors.email ? "focus:border-firered border-2 border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
           />
           {errors.email && (
             <img
@@ -116,7 +116,7 @@ const HeroRight = () => {
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             placeholder={errors.password ? "" : "Password"}
-            className={`${inputBaseStyles} ${errors.password ? "border-2 border-red-500 focus:border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
+            className={`${inputBaseStyles} ${errors.password ? "focus:border-firered border-2 border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
           />
           {errors.password && (
             <img
