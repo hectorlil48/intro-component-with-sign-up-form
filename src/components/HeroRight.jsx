@@ -7,27 +7,46 @@ const HeroRight = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
+  const [showPassword, setShowPassword] = useState(false);
+
+  const inputBaseStyles =
+    "placeholder-dark-blue placeholder:text-sm text-sm text-dark-blue w-full rounded-[5px] py-[15px] pl-5 lg:pl-8 focus:outline-none";
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     const newErrors = {
-      firstName: firstName.trim() === "",
-      lastName: lastName.trim() === "",
-      email: email.trim() === "",
-      password: password.trim() === "",
+      firstName: firstName.trim() === "" ? "First Name cannot be empty" : "",
+      lastName: lastName.trim() === "" ? "Last Name cannot be empty" : "",
+      email:
+        email.trim() === ""
+          ? "Email cannot be empty"
+          : !emailRegex.test(email)
+            ? "Looks like this is not a valid email"
+            : "",
+      password:
+        password.trim() === ""
+          ? "Password cannot be empty"
+          : password.length < 6
+            ? "Password must be at least 6 characters"
+            : "",
     };
 
     setErrors(newErrors);
 
     const hasErrors = Object.values(newErrors).some(Boolean);
     if (!hasErrors) {
-      console.log("Form submitted:", { firstName });
+      console.log("Form submitted:", { firstName, lastName, email, password });
+
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setPassword("");
+      setErrors({});
     }
   };
-
-  const inputBaseStyles =
-    "placeholder-dark-blue placeholder:text-sm text-sm text-dark-blue w-full rounded-[5px] py-[15px] pl-5 lg:pl-8 focus:outline-none";
 
   return (
     <div className="flex-1">
@@ -60,7 +79,7 @@ const HeroRight = () => {
           )}
           {errors.firstName && (
             <p className="text-firered mt-[6px] text-right text-[11px] font-medium italic">
-              First Name cannot be empty
+              {errors.firstName}
             </p>
           )}
         </div>
@@ -82,7 +101,7 @@ const HeroRight = () => {
           )}
           {errors.lastName && (
             <p className="text-firered mt-[6px] text-right text-[11px] font-medium italic">
-              Last Name cannot be empty
+              {errors.lastName}
             </p>
           )}
         </div>
@@ -105,19 +124,26 @@ const HeroRight = () => {
           )}
           {errors.email && (
             <p className="text-firered mt-[6px] text-right text-[11px] font-medium italic">
-              Email cannot be empty
+              {errors.email}
             </p>
           )}
         </div>
         <div className="relative">
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             name="password"
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             placeholder={errors.password ? "" : "Password"}
             className={`${inputBaseStyles} ${errors.password ? "focus:border-firered border-2 border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
           />
+          <button
+            type="button"
+            onClick={() => setShowPassword((prev) => !prev)}
+            className="absolute top-1/2 right-4 -translate-y-1/2 text-sm text-gray-600 focus:outline-none"
+          >
+            {showPassword ? "Hide" : "Show"}
+          </button>
           {errors.password && (
             <img
               src={errorIcon}
@@ -127,7 +153,7 @@ const HeroRight = () => {
           )}
           {errors.password && (
             <p className="text-firered mt-[6px] text-right text-[11px] font-medium italic">
-              Password cannot be empty
+              {errors.password}
             </p>
           )}
         </div>
