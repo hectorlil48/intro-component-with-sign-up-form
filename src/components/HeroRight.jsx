@@ -8,6 +8,7 @@ const HeroRight = () => {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
 
   const inputBaseStyles =
     "placeholder-dark-blue placeholder:text-sm text-sm text-dark-blue w-full rounded-[5px] py-[15px] pl-5 lg:pl-8 focus:outline-none";
@@ -45,6 +46,9 @@ const HeroRight = () => {
       setEmail("");
       setPassword("");
       setErrors({});
+      setSuccessMessage("✅ Your form was submitted successfully!");
+    } else {
+      setSuccessMessage("");
     }
   };
 
@@ -65,7 +69,13 @@ const HeroRight = () => {
           <input
             type="text"
             name="firstName"
-            onChange={(e) => setFirstName(e.target.value)}
+            onChange={(e) => {
+              setFirstName(e.target.value);
+              // Clear error as user types
+              if (errors.firstName) {
+                setErrors((prev) => ({ ...prev, firstName: "" }));
+              }
+            }}
             value={firstName}
             className={`${inputBaseStyles} ${errors.firstName ? "focus:border-firered border-2 border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
             placeholder={errors.firstName ? "" : "First Name"}
@@ -87,7 +97,13 @@ const HeroRight = () => {
           <input
             type="text"
             name="lastName"
-            onChange={(e) => setLastName(e.target.value)}
+            onChange={(e) => {
+              setLastName(e.target.value);
+              // Clear error as user types
+              if (errors.lastName) {
+                setErrors((prev) => ({ ...prev, lastName: "" }));
+              }
+            }}
             value={lastName}
             placeholder={errors.lastName ? "" : "Last Name"}
             className={`${inputBaseStyles} ${errors.lastName ? "focus:border-firered border-2 border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
@@ -109,8 +125,13 @@ const HeroRight = () => {
           <input
             type="email"
             name="email"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+              // Clear error as user types
+              if (errors.email) {
+                setErrors((prev) => ({ ...prev, email: "" }));
+              }
+            }}
             autoComplete="email"
             placeholder={errors.email ? "" : "Email Address"}
             className={`${inputBaseStyles} ${errors.email ? "focus:border-firered border-2 border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
@@ -132,18 +153,27 @@ const HeroRight = () => {
           <input
             type={showPassword ? "text" : "password"}
             name="password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              // Clear error as user types
+              if (errors.password) {
+                setErrors((prev) => ({ ...prev, password: "" }));
+              }
+            }}
             value={password}
             placeholder={errors.password ? "" : "Password"}
             className={`${inputBaseStyles} ${errors.password ? "focus:border-firered border-2 border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
           />
-          <button
-            type="button"
-            onClick={() => setShowPassword((prev) => !prev)}
-            className="absolute top-1/2 right-4 -translate-y-1/2 text-sm text-gray-600 focus:outline-none"
-          >
-            {showPassword ? "Hide" : "Show"}
-          </button>
+          {/* Toggle Button: Only show if there's no error */}
+          {!errors.password && password !== "" && (
+            <button
+              type="button"
+              onClick={() => setShowPassword((prev) => !prev)}
+              className="absolute top-1/2 right-4 -translate-y-1/2 text-sm text-gray-600 focus:outline-none"
+            >
+              {showPassword ? "Hide" : "Show"}
+            </button>
+          )}
           {errors.password && (
             <img
               src={errorIcon}
@@ -164,6 +194,11 @@ const HeroRight = () => {
           By clicking the button, you are agreeing to our{" "}
           <span className="text-firered font-bold">Terms and Services</span>
         </p>
+        {successMessage && (
+          <p className="mt-2 text-center text-sm text-green-600">
+            {successMessage}
+          </p>
+        )}
       </form>
     </div>
   );
