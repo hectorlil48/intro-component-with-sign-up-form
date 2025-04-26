@@ -19,8 +19,18 @@ const HeroRight = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     const newErrors = {
-      firstName: firstName.trim() === "" ? "First Name cannot be empty" : "",
-      lastName: lastName.trim() === "" ? "Last Name cannot be empty" : "",
+      firstName:
+        firstName.trim() === ""
+          ? "First Name cannot be empty"
+          : firstName.length < 3
+            ? "First Name must be at least 3 characters"
+            : "",
+      lastName:
+        lastName.trim() === ""
+          ? "Last Name cannot be empty"
+          : lastName.length < 3
+            ? "Last Name must be at least 3 characters"
+            : "",
       email:
         email.trim() === ""
           ? "Email cannot be empty"
