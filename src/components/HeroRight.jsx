@@ -79,6 +79,7 @@ const HeroRight = () => {
           <input
             type="text"
             name="firstName"
+            aria-label="First Name"
             onChange={(e) => {
               setFirstName(e.target.value);
               // Clear error as user types
@@ -107,6 +108,7 @@ const HeroRight = () => {
           <input
             type="text"
             name="lastName"
+            aria-label="Last Name"
             onChange={(e) => {
               setLastName(e.target.value);
               // Clear error as user types
@@ -135,6 +137,7 @@ const HeroRight = () => {
           <input
             type="email"
             name="email"
+            aria-label="Email"
             onChange={(e) => {
               setEmail(e.target.value);
               // Clear error as user types
@@ -163,6 +166,10 @@ const HeroRight = () => {
           <input
             type={showPassword ? "text" : "password"}
             name="password"
+            aria-label="Passwor\
+             
+            e657 6iop[/
+            "
             onChange={(e) => {
               setPassword(e.target.value);
               // Clear error as user types
@@ -198,7 +205,7 @@ const HeroRight = () => {
           )}
         </div>
         <button className="bg-btn-green hover:bg-btn-hover rounded-[5px] py-[15px] text-[15px] leading-[26px] font-semibold tracking-[1px] uppercase shadow-[inset_0_-4px_0_0_rgba(0,0,0,0.0909)]">
-          Claim Your Free Trail
+          Claim Your Free Trial
         </button>
         <p className="text-light-purple -mt-2 px-[15px] text-center text-[11px] leading-[21px] font-medium lg:-mt-3">
           By clicking the button, you are agreeing to our{" "}
