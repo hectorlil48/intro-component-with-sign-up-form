@@ -76,10 +76,12 @@ const HeroRight = () => {
         className="flex flex-col gap-4 rounded-[10px] bg-white p-6 shadow-[0_8px_0_0_rgba(0,0,0,0.14)] lg:gap-5 lg:p-10"
       >
         <div className="relative">
+          <label htmlFor="firstName" className="sr-only"></label>
           <input
+            id="firstName"
             type="text"
             name="firstName"
-            aria-label="First Name"
+            placeholder={errors.firstName ? "" : "First Name"}
             onChange={(e) => {
               setFirstName(e.target.value);
               // Clear error as user types
@@ -88,8 +90,7 @@ const HeroRight = () => {
               }
             }}
             value={firstName}
-            className={`${inputBaseStyles} ${errors.firstName ? "focus:border-firered border-2 border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
-            placeholder={errors.firstName ? "" : "First Name"}
+            className={`${inputBaseStyles} transition-colors duration-300 ease-in-out ${errors.firstName ? "focus:border-firered border-2 border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
           />
           {errors.firstName && (
             <img
@@ -99,16 +100,20 @@ const HeroRight = () => {
             />
           )}
           {errors.firstName && (
-            <p className="text-firered mt-[6px] text-right text-[11px] font-medium italic">
+            <p
+              className="text-firered mt-[6px] text-right text-[11px] font-medium italic"
+              role="alert"
+            >
               {errors.firstName}
             </p>
           )}
         </div>
         <div className="relative">
+          <label htmlFor="lastName" className="sr-only"></label>
           <input
+            id="lastName"
             type="text"
             name="lastName"
-            aria-label="Last Name"
             onChange={(e) => {
               setLastName(e.target.value);
               // Clear error as user types
@@ -118,7 +123,7 @@ const HeroRight = () => {
             }}
             value={lastName}
             placeholder={errors.lastName ? "" : "Last Name"}
-            className={`${inputBaseStyles} ${errors.lastName ? "focus:border-firered border-2 border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
+            className={`${inputBaseStyles} transition-colors duration-300 ease-in-out ${errors.lastName ? "focus:border-firered border-2 border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
           />
           {errors.lastName && (
             <img
@@ -134,7 +139,9 @@ const HeroRight = () => {
           )}
         </div>
         <div className="relative">
+          <label htmlFor="email" className="sr-only"></label>
           <input
+            id="email"
             type="email"
             name="email"
             aria-label="Email"
@@ -147,7 +154,7 @@ const HeroRight = () => {
             }}
             autoComplete="email"
             placeholder={errors.email ? "" : "Email Address"}
-            className={`${inputBaseStyles} ${errors.email ? "focus:border-firered border-2 border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
+            className={`${inputBaseStyles} transition-colors duration-300 ease-in-out ${errors.email ? "focus:border-firered border-2 border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
           />
           {errors.email && (
             <img
@@ -163,13 +170,12 @@ const HeroRight = () => {
           )}
         </div>
         <div className="relative">
+          <label htmlFor="password" className="sr-only"></label>
           <input
+            id="password"
             type={showPassword ? "text" : "password"}
             name="password"
-            aria-label="Passwor\
-             
-            e657 6iop[/
-            "
+            aria-label="Password"
             onChange={(e) => {
               setPassword(e.target.value);
               // Clear error as user types
@@ -179,7 +185,7 @@ const HeroRight = () => {
             }}
             value={password}
             placeholder={errors.password ? "" : "Password"}
-            className={`${inputBaseStyles} ${errors.password ? "focus:border-firered border-2 border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
+            className={`${inputBaseStyles} transition-colors duration-300 ease-in-out ${errors.password ? "focus:border-firered border-2 border-red-500" : "border-border-grey focus:border-cta-purple border"}`}
           />
           {/* Toggle Button: Only show if there's no error */}
           {!errors.password && password !== "" && (
